@@ -50161,7 +50161,7 @@ S(a){var s=this,r=null
 return new A.uD(s.r,s.c,s.d,B.vd,B.G,!1,r,!1,B.au,r,r,s.at,r,B.GS,!0,r)}}
 A.xG.prototype={
 S(a){var s=null
-return new A.tB(new A.ri(B.In,"HR Game",A.a5e(s,B.hC,s),B.tl,B.hC,s),B.If,s)}}
+return new A.tB(new A.ri(B.In,"Surf HR Game",A.a5e(s,B.hC,s),B.tl,B.hC,s),B.If,s)}}
 A.dB.prototype={
 i(a,b){var s,r=this
 if(b==null)return!1
