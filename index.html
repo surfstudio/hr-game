@@ -34,12 +34,61 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "3350866573";
+    const serviceWorkerVersion = "2459858490";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background: #292929;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .logo, .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .spinner img {
+      animation: spin 5.5s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media screen and (max-width: 960px) {
+      .spinner img {
+        width: 80vw;
+      }
+
+      .logo img {
+        width: 20vw;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <div class="logo">
+      <img src="./assets/surf.svg">
+    </div>
+    <div class="spinner">
+      <img src="./assets/surf_spinner.svg" alt="spinner">
+    </div>
+  </div>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -48,8 +97,11 @@
           serviceWorkerVersion: serviceWorkerVersion,
         },
         onEntrypointLoaded: function(engineInitializer) {
+          const currentMillis = Date.now();
           engineInitializer.initializeEngine().then(function(appRunner) {
+            setTimeout(() => {
             appRunner.runApp();
+            }, Date.now() - currentMillis > 2000 ? 0 : Date.now() - currentMillis)
           });
         }
       });
