@@ -19,6 +19,7 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Surf HR Game">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,12 +41,15 @@
   <script src="flutter.js" defer></script>
   <style>
     body {
+      background: #292929;
       margin: 0;
       padding: 0;
     }
     .container {
-      background: #292929;
       height: 100vh;
+      height: -moz-available;
+      height: -webkit-fill-available;
+      height: fill-available;
       width: 100%;
     }
 
@@ -57,7 +61,7 @@
     }
 
     .spinner img {
-      animation: spin 5.5s linear infinite;
+      animation: spin 20s linear infinite;
     }
 
     @keyframes spin {
@@ -100,7 +104,8 @@
           const currentMillis = Date.now();
           engineInitializer.initializeEngine().then(function(appRunner) {
             setTimeout(() => {
-            appRunner.runApp();
+              document.querySelector(".container").style.display = "none";
+              appRunner.runApp();
             }, Date.now() - currentMillis > 2000 ? 0 : Date.now() - currentMillis)
           });
         }
